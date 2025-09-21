@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Évaluation Service Hôtelier</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Évaluez notre service hôtelier</h1>
+
+        <form id="reviewForm">
+            <label for="name">Votre nom :</label>
+            <input type="text" id="name" required>
+
+            <label for="cleanliness">Propreté :</label>
+            <input type="number" id="cleanliness" min="1" max="5" required>
+
+            <label for="service">Service :</label>
+            <input type="number" id="service" min="1" max="5" required>
+
+            <label for="comfort">Confort :</label>
+            <input type="number" id="comfort" min="1" max="5" required>
+
+            <label for="comment">Commentaire :</label>
+            <textarea id="comment" rows="4"></textarea>
+
+            <button type="submit">Soumettre votre évaluation</button>
+        </form>
+
+        <h2>Avis des clients :</h2>
+        <div id="reviewList" class="review-list"></div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
