@@ -3,30 +3,38 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Choix du système d'exploitation pour l'exécution
 
     steps:
+      # 1. Checkout du code
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # 2. Configuration de Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '14'  # Version de Node.js, adapte si nécessaire
 
+      # 3. Installation des dépendances
       - name: Install dependencies
         run: npm install
 
+      # 4. Génération du build
+      - name: Build the project
+        run: npm run build  # Assure-toi que tu as un script "build" dans ton package.json
+
+      # 5. Déploiement sur GitHub Pages
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages
-          folder: .
-          clean: true
-          force: true
+          branch: gh-pages  # La branche sur laquelle déployer
+          folder: ./build   # Le dossier à déployer (généralement ./build ou ./public)
+          clean: true        # Nettoie la branche de déploiement avant chaque déploiement
+          force: true        # Force le déploiement (pour éviter tout conflit)
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
