@@ -1,36 +1,112 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notation par Émojis</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Système de notation par émojis</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <h1>Évaluez votre expérience !</h1>
+    <h1>Évaluation de l'hôtel</h1>
 
-  <form id="rating-form">
-    <div id="rating">
-      <label for="rating-1">😡</label>
-      <input type="radio" id="rating-1" name="rating" value="1" />
-      
-      <label for="rating-2">😐</label>
-      <input type="radio" id="rating-2" name="rating" value="2" />
-      
-      <label for="rating-3">🙂</label>
-      <input type="radio" id="rating-3" name="rating" value="3" />
-      
-      <label for="rating-4">😊</label>
-      <input type="radio" id="rating-4" name="rating" value="4" />
-      
-      <label for="rating-5">😄</label>
-      <input type="radio" id="rating-5" name="rating" value="5" />
+    <form id="reviewForm">
+        <div>
+            <label for="name">Votre nom :</label>
+            <input type="text" id="name" required>
+        </div>
+
+        <div>
+            <label for="cleanliness">Propreté :</label>
+            <div class="emoji-rating">
+                <label>
+                    <input type="radio" name="cleanliness" value="1" required>
+                    😡
+                </label>
+                <label>
+                    <input type="radio" name="cleanliness" value="2">
+                    😐
+                </label>
+                <label>
+                    <input type="radio" name="cleanliness" value="3">
+                    🙂
+                </label>
+                <label>
+                    <input type="radio" name="cleanliness" value="4">
+                    😊
+                </label>
+                <label>
+                    <input type="radio" name="cleanliness" value="5">
+                    😄
+                </label>
+            </div>
+        </div>
+
+        <div>
+            <label for="service">Service :</label>
+            <div class="emoji-rating">
+                <label>
+                    <input type="radio" name="service" value="1" required>
+                    😡
+                </label>
+                <label>
+                    <input type="radio" name="service" value="2">
+                    😐
+                </label>
+                <label>
+                    <input type="radio" name="service" value="3">
+                    🙂
+                </label>
+                <label>
+                    <input type="radio" name="service" value="4">
+                    😊
+                </label>
+                <label>
+                    <input type="radio" name="service" value="5">
+                    😄
+                </label>
+            </div>
+        </div>
+
+        <div>
+            <label for="comfort">Confort :</label>
+            <div class="emoji-rating">
+                <label>
+                    <input type="radio" name="comfort" value="1" required>
+                    😡
+                </label>
+                <label>
+                    <input type="radio" name="comfort" value="2">
+                    😐
+                </label>
+                <label>
+                    <input type="radio" name="comfort" value="3">
+                    🙂
+                </label>
+                <label>
+                    <input type="radio" name="comfort" value="4">
+                    😊
+                </label>
+                <label>
+                    <input type="radio" name="comfort" value="5">
+                    😄
+                </label>
+            </div>
+        </div>
+
+        <div>
+            <label for="comment">Commentaire :</label>
+            <textarea id="comment" rows="4" required></textarea>
+        </div>
+
+        <button type="submit">Soumettre l'évaluation</button>
+    </form>
+
+    <h2>Évaluations</h2>
+    <div id="reviewList">
+        <!-- Liste des évaluations -->
     </div>
-    
-    <button type="submit">Soumettre</button>
-  </form>
 
-  <script src="script.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
