@@ -1,38 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Évaluation Service Hôtelier</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notation par Émojis</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Évaluez notre service hôtelier</h1>
 
-        <form id="reviewForm">
-            <label for="name">Votre nom :</label>
-            <input type="text" id="name" required>
+  <h1>Évaluez votre expérience !</h1>
 
-            <label for="cleanliness">Propreté :</label>
-            <input type="number" id="cleanliness" min="1" max="5" required>
-
-            <label for="service">Service :</label>
-            <input type="number" id="service" min="1" max="5" required>
-
-            <label for="comfort">Confort :</label>
-            <input type="number" id="comfort" min="1" max="5" required>
-
-            <label for="comment">Commentaire :</label>
-            <textarea id="comment" rows="4"></textarea>
-
-            <button type="submit">Soumettre votre évaluation</button>
-        </form>
-
-        <h2>Avis des clients :</h2>
-        <div id="reviewList" class="review-list"></div>
+  <form id="rating-form">
+    <div id="rating">
+      <label for="rating-1">😡</label>
+      <input type="radio" id="rating-1" name="rating" value="1" />
+      
+      <label for="rating-2">😐</label>
+      <input type="radio" id="rating-2" name="rating" value="2" />
+      
+      <label for="rating-3">🙂</label>
+      <input type="radio" id="rating-3" name="rating" value="3" />
+      
+      <label for="rating-4">😊</label>
+      <input type="radio" id="rating-4" name="rating" value="4" />
+      
+      <label for="rating-5">😄</label>
+      <input type="radio" id="rating-5" name="rating" value="5" />
     </div>
+    
+    <button type="submit">Soumettre</button>
+  </form>
 
-    <script src="js/main.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
