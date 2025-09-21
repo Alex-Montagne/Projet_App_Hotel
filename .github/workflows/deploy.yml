@@ -3,33 +3,34 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  
+      - main 
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write  # Donne l'accès en écriture au contenu du dépôt
+      pages: write     # Donne l'accès en écriture aux pages GitHub
+      id-token: write  # Pour autoriser la validation des tokens
+
     steps:
-      # 1. Checkout du code
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # 2. Configuration de Node.js (si tu as besoin de Node pour des outils comme npm, Yarn, etc.)
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  
+          node-version: '14'
 
-      # 3. Installation des dépendances (si tu as des dépendances avec npm)
       - name: Install dependencies
         run: npm install
 
-      # 4. Déploiement sur GitHub Pages
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: . 
+          folder: .
           clean: true
           force: true
         env:
