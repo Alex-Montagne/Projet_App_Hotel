@@ -18,10 +18,10 @@ async function getReviews() {
 }
 
 // Fonction pour soumettre une nouvelle évaluation
-async function submitReview(name, cleanliness, service, comfort, comment) {
+async function submitReview(name, cleanliness, service, comfort, emojiRating, comment) {
     const { data, error } = await supabase
         .from('reviews')
-        .insert([{ name, cleanliness, service, comfort, comment }]);
+        .insert([{ name, cleanliness, service, comfort, emoji_rating: emojiRating, comment }]); // Utilisation de emoji_rating dans la base de données
 
     if (error) {
         console.error('Erreur lors de l\'ajout de l\'évaluation:', error);
@@ -48,11 +48,24 @@ function updateReviewList(reviews) {
                 <p>Propreté : ${review.cleanliness} / 5</p>
                 <p>Service : ${review.service} / 5</p>
                 <p>Confort : ${review.comfort} / 5</p>
+                <p>Notation : ${getEmojiLabel(review.emoji_rating)}</p>  <!-- Affichage de l'émoji -->
                 <p>${review.comment}</p>
                 <p><small>${new Date(review.created_at).toLocaleString()}</small></p>
             `;
             reviewList.appendChild(reviewElement);
         });
+    }
+}
+
+// Fonction pour obtenir l'émoji correspondant à la note
+function getEmojiLabel(rating) {
+    switch(rating) {
+        case "1": return "😡";
+        case "2": return "😐";
+        case "3": return "🙂";
+        case "4": return "😊";
+        case "5": return "😄";
+        default: return "Inconnu";
     }
 }
 
@@ -65,9 +78,15 @@ document.getElementById('reviewForm').addEventListener('submit', (event) => {
     const service = document.getElementById('service').value;
     const comfort = document.getElementById('comfort').value;
     const comment = document.getElementById('comment').value;
+    const emojiRating = document.querySelector('input[name="rating"]:checked')?.value;  // Récupérer l'émoji sélectionné
+
+    if (!emojiRating) {
+        alert("Veuillez sélectionner un émoji pour la notation !");
+        return;
+    }
 
     // Soumettre l'évaluation à Supabase
-    submitReview(name, cleanliness, service, comfort, comment).then(() => {
+    submitReview(name, cleanliness, service, comfort, emojiRating, comment).then(() => {
         alert('Merci pour votre évaluation !');
         getReviews().then(updateReviewList);  // Récupérer les évaluations et mettre à jour la liste
     }).catch(err => {
@@ -79,5 +98,4 @@ document.getElementById('reviewForm').addEventListener('submit', (event) => {
 // Mettre à jour la liste des évaluations au chargement de la page
 window.addEventListener('DOMContentLoaded', () => {
     getReviews().then(updateReviewList);
-
 });
