@@ -1,6 +1,6 @@
 // Initialisation de Supabase
-const supabaseUrl = 'https://your-project-id.supabase.co';  // Remplace par ton URL Supabase
-const supabaseKey = 'your-public-anon-key';  // Remplace par ta clé publique
+const supabaseUrl = 'https://buaolvejrkiarrdtocvg.supabase.co';  
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1YW9sdmVqcmtpYXJyZHRvY3ZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg0NDYwNDcsImV4cCI6MjA3NDAyMjA0N30.oiR6-74kf1Nq37yWenQQpZMJXDzfIqAumFRT-u_BFbM'; 
 const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 // Fonction pour récupérer les évaluations depuis Supabase
@@ -79,4 +79,5 @@ document.getElementById('reviewForm').addEventListener('submit', (event) => {
 // Mettre à jour la liste des évaluations au chargement de la page
 window.addEventListener('DOMContentLoaded', () => {
     getReviews().then(updateReviewList);
+
 });
